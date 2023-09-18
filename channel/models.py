@@ -9,27 +9,16 @@ class Channel(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
+    profile = models.ImageField(upload_to='chat_profile/')
     author = models.ForeignKey( AUTH_USER_MODEL, on_delete= models.CASCADE, related_name = 'author')
     members= models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='members')
     created_at = models.DateTimeField(auto_now_add=datetime.now())
     updated_at = models.DateTimeField(auto_now=True)
 
-    
-class Profile(models.Model):
-    id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
-    profile = models.ImageField(upload_to='chat_profile/')
-    channel = models.ForeignKey(Channel, on_delete=models.CASCADE, related_name = 'channel')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-
-    def __str__(self):
-        return self.channel.name
-
 
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
-    channel_content = models.TextField()
+    content = models.TextField()
     slug = models.SlugField()
     ch_image = models.ImageField(upload_to='post/image', null=True, blank=True)
     ch_video = models.FileField(upload_to='post/video', null=True, blank=True)

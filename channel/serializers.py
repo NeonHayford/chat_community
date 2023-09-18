@@ -1,26 +1,22 @@
-from rest_framework.serializers import ModelSerializer
-from .models import Channel, Profile, Post, Likes
+from rest_framework import serializers
+from .models import Channel, Post, Likes
 
 
-class ChannelSerializer(ModelSerializer):
+class ChannelSerializer(serializers.ModelSerializer):
+    Profile = serializers.ImageField(required=False)
     class Meta:
         model = Channel
         fields = '__all__'
 
 
-class ProfileSerializer(ModelSerializer):
-    class Meta:
-        model = Profile
-        fields = '__all__'
 
-
-class PostSerializer(ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
 
 
-class LikeSerializer(ModelSerializer):
+class LikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Likes
         fields = '__all__'

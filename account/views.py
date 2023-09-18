@@ -72,7 +72,7 @@ class DeleteProfileView(APIView):
             except Profile.DoesNotExist:
                 return Response({'error': "User profile does not exist..."}, status=HTTP_404_NOT_FOUND)
             if Profile.user_image:
-                image_path = os.path.join(MEDIA_ROOT, str(Profile.user_image)) # Watch for changes(C:\Users\HayfordLumorvi\Desktop\Projects\django_fastapi\uploads/<django.db.models.fields.files.ImageFileDescriptor object at 0x0000027681F0A350>)
+                image_path = os.path.join(MEDIA_ROOT, str(Profile.user_image)) #field # Watch for changes(C:\Users\HayfordLumorvi\Desktop\Projects\django_fastapi\uploads/<django.db.models.fields.files.ImageFileDescriptor object at 0x0000027681F0A350>)
                 print(image_path)
                 if os.path.exists(image_path):
                     os.remove(image_path)
