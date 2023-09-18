@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path, include
 from .views import *
+
 urlpatterns = [
     # Channels
     path('channel/create',  CreateChannelView.as_view()),
@@ -14,4 +15,5 @@ urlpatterns = [
     # Post likes
     path('post/<str:post_id>/like',  LikesView.as_view()),
     # path('', include('group.urls')),
+    path('', include('group.urls')),
 ]

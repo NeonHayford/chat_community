@@ -23,9 +23,8 @@ router = DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('group.urls')),
-    path('', include('channel.urls')),
     path('auth/', include('account.urls')),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
+    path('api/', include('channel.urls'))
 ]
