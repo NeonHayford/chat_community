@@ -22,6 +22,7 @@ class Post(models.Model):
     slug = models.SlugField()
     ch_image = models.ImageField(upload_to='post/image', null=True, blank=True)
     ch_video = models.FileField(upload_to='post/video', null=True, blank=True)
+    # channel = models.ForeignKey( Channel, on_delete=models.CASCADE, related_name='channel')
     author = models.ForeignKey( AUTH_USER_MODEL, on_delete=models.CASCADE, related_name = 'post_author')
     created_at = models.DateTimeField(auto_now_add= datetime.now())
     modified_at = models.DateTimeField(auto_now = datetime.now())

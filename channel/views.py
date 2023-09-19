@@ -4,7 +4,7 @@ from .serializers import ChannelSerializer, PostSerializer, LikeSerializer
 from .models import Channel, Post, Likes
 from rest_framework.response import Response
 from rest_framework.status import *
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.filters import SearchFilter
 
 # Create your views here.
@@ -69,7 +69,7 @@ class DeleteChannelView(APIView):
                 return Response({'message': "Ooops! This channel was not created..."}, status=HTTP_404_NOT_FOUND)
             if Channel.id:
                 channel.delete()
-                return Response({'success': "image deleted successfully..."}, status=HTTP_202_ACCEPTED)
+                return Response({'success': "Channel was delete successfully..."}, status=HTTP_202_ACCEPTED)
         except Exception as e:
             return Response({'error': str(e)}, status=HTTP_500_INTERNAL_SERVER_ERROR)
 

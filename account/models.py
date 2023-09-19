@@ -24,6 +24,8 @@ class UserManager(BaseUserManager):
             user = self.create_user(
                 email = email,
                 password = password,
+                is_staff = True,
+                is_superuser = True,
                 **extra_fields
                 )
             return user
