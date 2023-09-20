@@ -161,7 +161,7 @@ class LikesView(APIView):
             except Post.DoesNotExist:
                 return Response({'error': 'Ooops! Post not found'}, status=HTTP_404_NOT_FOUND)
             try:
-                like = Likes.objects.get(post=post, user=request.user)
+                like = Likes.objects.filter(post=post, user=request.user)
                 like.delete()
                 return Response(status=HTTP_204_NO_CONTENT)
             except Likes.DoesNotExist:

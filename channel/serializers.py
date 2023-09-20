@@ -8,24 +8,22 @@ class ChannelSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
 
 
-
 class LikeSerializer(serializers.ModelSerializer):
     likescounter = serializers.SerializerMethodField('get_likescounter',  read_only=True)
+    post = PostSerializer(read_only=True)
+
     class Meta:
         model = Likes
         fields = '__all__'
-
 
     def get_likescounter(self, request):
         post = request.post
         user = request.user
         likes_count = Likes.objects.filter(post=post, user=user).count()
         return likes_count
-
