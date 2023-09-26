@@ -9,7 +9,6 @@ urlpatterns = [
 
     # Posts
     path('post/create',  CreatePostView.as_view()),
-    path('<str:ChannelId>/channel/<str:PostId>',  UpdatePostView.as_view()),
     path('channel/<str:ChannelId>/<str:PostId>/remove',  DeletePostView.as_view()),
 
     # Post likes
