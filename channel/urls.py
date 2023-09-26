@@ -17,7 +17,3 @@ urlpatterns = [
     # path('', include('group.urls')),
     path('', include('group.urls')),
 ]
-
-# post 081f909a-4e2d-4292-9f42-74c159bd5555
-
-# author e82f6676-625b-4bbe-8b15-5d864e805244
