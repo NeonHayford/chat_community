@@ -11,7 +11,7 @@ class Channel(models.Model):
     description = models.TextField(max_length=300)
     profile = models.ImageField(upload_to='chat_profile/')
     author = models.ForeignKey( AUTH_USER_MODEL, on_delete= models.CASCADE, related_name = 'author')
-    members= models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='members')
+    members= models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='channel_members')
     created_at = models.DateTimeField(auto_now_add=datetime.now())
     updated_at = models.DateTimeField(auto_now=True)
 

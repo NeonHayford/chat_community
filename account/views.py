@@ -6,12 +6,12 @@ from rest_framework.response import Response
 from .serializers import ProfileSerializer
 from core.settings import MEDIA_ROOT
 import os
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 # Create your views here.
 class LogoutView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def logout(self, request):
         try:
@@ -22,7 +22,7 @@ class LogoutView(APIView):
 
 
 class CreateProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def post(self, request):
         try:
             serializer = ProfileSerializer(data = request.data)
@@ -34,7 +34,7 @@ class CreateProfileView(APIView):
             return Response({'error': str(e)}, status=HTTP_500_INTERNAL_SERVER_ERROR)
 
 class updateProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def put(self, request, UserId):
         try:
             try:
@@ -62,7 +62,7 @@ class updateProfileView(APIView):
         except Exception as e: return Response({'error': str(e)}, status = HTTP_500_INTERNAL_SERVER_ERROR)
 
 class DeleteProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     def delete(self, request, UserId):
         try:
             try:
