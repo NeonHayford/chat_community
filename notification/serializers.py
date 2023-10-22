@@ -13,7 +13,7 @@ class ChannelNotificationSerializer(serializers.ModelSerializer):
             call = Post.content.save_form_data()
             assert isinstance(call, content)
             return call
-        
+
 
 class MessageNotificationSerializer(serializers.ModelSerializer):
     content = serializers.SerializerMethodField('get_content',  read_only=True)    

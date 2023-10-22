@@ -33,3 +33,4 @@ class ReplyNotificationView(ListCreateAPIView):
     ordering = ['sender']
     search_fields = ['sender', 'content']
 
+
